@@ -4,6 +4,7 @@
 import pygame
 
 from code.Entity import Entity
+from code.Const import WIN_WIDTH, WIN_HEIGHT
 
 
 class Player(Entity):
@@ -11,11 +12,15 @@ class Player(Entity):
     def __init__(self):
 
         surf = pygame.image.load(
-            "./asset/Attacck.png"
+            "./asset/player.png"
+        )
+        surf = pygame.transform.scale(
+            surf,
+            (80, 80)
         )
 
         rect = surf.get_rect(
-            center=(400, 300)
+            center=(WIN_WIDTH // 2, WIN_HEIGHT // 2)
         )
 
         super().__init__(
@@ -26,7 +31,7 @@ class Player(Entity):
 
         self.direction = "RIGHT"
         self.speed = 5
-
+        self.health = 100
 
     def move(self):
 
@@ -47,3 +52,17 @@ class Player(Entity):
         if keys[pygame.K_s]:
             self.rect.y += self.speed
             self.direction = "DOWN"
+
+        # Limites da tela
+
+        if self.rect.left < 0:
+            self.rect.left = 0
+
+        if self.rect.right > WIN_WIDTH:
+            self.rect.right = WIN_WIDTH
+
+        if self.rect.top < 0:
+            self.rect.top = 0
+
+        if self.rect.bottom > WIN_HEIGHT:
+            self.rect.bottom = WIN_HEIGHT
