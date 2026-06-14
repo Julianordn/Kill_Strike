@@ -14,7 +14,7 @@ from code.Enemy import Enemy
 class Level:
 
 
-    def __init__(self, window, name, game_mode):
+    def __init__(self, window, name, game_mode, background, target_kills):
 
         self.window = window
 
@@ -36,7 +36,12 @@ class Level:
         # Fundo
 
         self.background = pygame.image.load(
-            "./asset/War1.png"
+            background
+        )
+
+        self.background = pygame.transform.scale(
+            self.background,
+            (WIN_WIDTH, WIN_HEIGHT)
         )
 
 
@@ -63,7 +68,7 @@ class Level:
 
         self.kills = 0
 
-        self.target_kills = 30
+        self.target_kills = target_kills
 
 
         self.enemy_spawned = 5
@@ -74,6 +79,8 @@ class Level:
             "Arial",
             30
         )
+
+        self.show_level_intro()
 
 
 
@@ -564,8 +571,64 @@ class Level:
 
             )
 
+    def show_level_intro(self):
 
+        self.window.blit(
+            self.background,
+            (0, 0)
+        )
 
+        font_title = pygame.font.SysFont(
+            "Impact",
+            90
+        )
+
+        font_text = pygame.font.SysFont(
+            "Arial",
+            35
+        )
+
+        title = font_title.render(
+            self.name.upper(),
+            True,
+            (255, 0, 0)
+        )
+
+        mission = font_text.render(
+            f"ELIMINE {self.target_kills} INIMIGOS",
+            True,
+            (255, 255, 255)
+        )
+
+        title_rect = title.get_rect(
+            center=(
+                WIN_WIDTH // 2,
+                WIN_HEIGHT // 2 - 50
+            )
+        )
+
+        mission_rect = mission.get_rect(
+            center=(
+                WIN_WIDTH // 2,
+                WIN_HEIGHT // 2 + 40
+            )
+        )
+
+        self.window.blit(
+            title,
+            title_rect
+        )
+
+        self.window.blit(
+            mission,
+            mission_rect
+        )
+
+        pygame.display.flip()
+
+        pygame.time.wait(
+            2000
+        )
 
 
 
