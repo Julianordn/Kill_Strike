@@ -88,17 +88,11 @@ class Menu:
 
             # OBJETIVO
 
-
             self.menu_text(
-
-                28,
-
-                "ELIMINE 30 INIMIGOS PARA VENCER",
-
-                (255,255,255),
-
-                (WIN_WIDTH / 2,280)
-
+                text_size=30,
+                text="COMPLETE 3 NIVEIS E ELIMINE TODOS OS INIMIGOS",
+                text_color=(255, 255, 255),
+                text_center_pos=(WIN_WIDTH / 2, 280)
             )
 
 
