@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pygame
+import sys
 
 from code.Const import WIN_WIDTH, WIN_HEIGHT
 from code.Entity import Entity
@@ -466,10 +467,8 @@ class Level:
 
                             )
 
-
                             pygame.quit()
-
-                            quit()
+                            sys.exit()
 
 
 
