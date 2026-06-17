@@ -103,9 +103,8 @@ class Level:
 
 
                 if event.type == pygame.QUIT:
-
                     pygame.quit()
-                    quit()
+                    sys.exit()
 
 
 
