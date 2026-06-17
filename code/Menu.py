@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pygame
+import sys
 
 from pygame import Surface, Rect
 from pygame.font import Font
@@ -206,7 +207,7 @@ class Menu:
 
                     pygame.quit()
 
-                    quit()
+                    sys.exit()
 
 
 
